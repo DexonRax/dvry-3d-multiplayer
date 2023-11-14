@@ -1,0 +1,139 @@
+[gd_scene load_steps=13 format=3 uid="uid://c6jecu12i6l7r"]
+
+[ext_resource type="Script" path="res://Scripts/testcar.gd" id="1_fo4il"]
+[ext_resource type="PackedScene" uid="uid://c82uea7xqh50u" path="res://Assets/Meshes/testcar.gltf" id="2_iiqi5"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_hrc0v"]
+albedo_color = Color(0.0784314, 0.0784314, 0.0784314, 1)
+
+[sub_resource type="CylinderMesh" id="CylinderMesh_2lx7p"]
+material = SubResource("StandardMaterial3D_hrc0v")
+top_radius = 0.4
+bottom_radius = 0.4
+height = 0.2
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_eniim"]
+size = Vector3(0.516169, 1, 0.460733)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_r0q3u"]
+points = PackedVector3Array(0.4375, 0.3125, 1.125, 0.4375, 0.1875, 1.125, 0.4375, 0.3125, -0.875, -0.4375, 0.3125, 1.125, -0.4375, 0.1875, 1.125, 0.4375, 0.1875, -0.875, -0.4375, 0.3125, -0.875, -0.4375, 0.1875, -0.875)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_lvcrp"]
+points = PackedVector3Array(0.5, 0.625, 1.1875, 0.5, 0.625, 1.125, -0.5, 0.625, 1.1875, 0.5, 0.1875, 1.1875, 0.5, 0.1875, 1.125, -0.5, 0.625, 1.125, -0.5, 0.1875, 1.1875, -0.5, 0.1875, 1.125)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_ro7k5"]
+points = PackedVector3Array(0.5, 0.625, 0.3125, 0.5, 0.625, 0.25, -0.5, 0.625, 0.3125, 0.5, 0.375, 0.3125, 0.5, 0.375, 0.25, -0.5, 0.625, 0.25, -0.5, 0.375, 0.3125, -0.5, 0.375, 0.25)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_tu7ik"]
+points = PackedVector3Array(0.4375, 0.375, 0.3125, 0.5, 0.375, 0.3125, 0.4375, 0.375, 1.125, 0.4375, 0.625, 0.3125, 0.5, 0.625, 0.3125, 0.5, 0.375, 1.125, 0.4375, 0.625, 1.125, 0.5, 0.625, 1.125)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_d7dhg"]
+points = PackedVector3Array(-0.5, 0.375, 0.3125, -0.4375, 0.375, 0.3125, -0.5, 0.375, 1.125, -0.5, 0.625, 0.3125, -0.4375, 0.625, 0.3125, -0.4375, 0.375, 1.125, -0.5, 0.625, 1.125, -0.4375, 0.625, 1.125)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_obvvp"]
+points = PackedVector3Array(-0.4375, 0.3125, 0.25, -0.4375, 0.375, 0.25, 0.4375, 0.3125, 0.25, -0.4375, 0.3125, 1.125, -0.4375, 0.375, 1.125, 0.4375, 0.375, 0.25, 0.4375, 0.3125, 1.125, 0.4375, 0.375, 1.125)
+
+[sub_resource type="ConvexPolygonShape3D" id="ConvexPolygonShape3D_im6a4"]
+points = PackedVector3Array(-0.5, 0.375, -0.875, -0.5, 0.625, -0.875, 0.5, 0.375, -0.875, -0.5, 0.375, -0.375, -0.5, 0.625, -0.375, 0.5, 0.625, -0.875, 0.5, 0.375, -0.375, 0.5, 0.625, -0.375)
+
+[node name="testcar" type="VehicleBody3D"]
+mass = 800.0
+linear_damp = 0.4
+script = ExtResource("1_fo4il")
+
+[node name="WHEEL_FR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, 1.7)
+use_as_steering = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3D4" type="MeshInstance3D" parent="WHEEL_FR"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_2lx7p")
+skeleton = NodePath("../../WHEEL_RL")
+
+[node name="WHEEL_FL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.3, 1.7)
+use_as_steering = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3D3" type="MeshInstance3D" parent="WHEEL_FL"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_2lx7p")
+skeleton = NodePath("../../WHEEL_RL")
+
+[node name="WHEEL_RL" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1, 0.3, -1.5)
+use_as_traction = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="WHEEL_RL"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_2lx7p")
+
+[node name="WHEEL_RR" type="VehicleWheel3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -1, 0.3, -1.5)
+use_as_traction = true
+wheel_radius = 0.4
+suspension_stiffness = 50.0
+
+[node name="MeshInstance3D2" type="MeshInstance3D" parent="WHEEL_RR"]
+transform = Transform3D(-4.37114e-08, -1, 0, 1, -4.37114e-08, 0, 0, 0, 1, 0, 0, 0)
+mesh = SubResource("CylinderMesh_2lx7p")
+skeleton = NodePath("../../WHEEL_RL")
+
+[node name="Area3D" type="Area3D" parent="."]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Area3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.2034, 0.511725)
+shape = SubResource("BoxShape3D_eniim")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 3.27835e-08, 0, 0.375)
+shape = SubResource("ConvexPolygonShape3D_r0q3u")
+
+[node name="CollisionShape3D6" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 3.27835e-08, 0, 0.375)
+shape = SubResource("ConvexPolygonShape3D_lvcrp")
+
+[node name="CollisionShape3D2" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 3.27835e-08, 0, 0.375)
+shape = SubResource("ConvexPolygonShape3D_ro7k5")
+
+[node name="CollisionShape3D3" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 3.27835e-08, 0, 0.375)
+shape = SubResource("ConvexPolygonShape3D_tu7ik")
+
+[node name="CollisionShape3D4" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 3.27835e-08, 0, 0.375)
+shape = SubResource("ConvexPolygonShape3D_d7dhg")
+
+[node name="CollisionShape3D5" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 3.27835e-08, 0, 0.375)
+shape = SubResource("ConvexPolygonShape3D_obvvp")
+
+[node name="CollisionShape3D7" type="CollisionShape3D" parent="."]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 3.27835e-08, 0, 0.375)
+shape = SubResource("ConvexPolygonShape3D_im6a4")
+
+[node name="HeadlightL" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, 0.75, 1, 2.25)
+light_color = Color(1, 1, 0, 1)
+light_energy = 8.0
+shadow_enabled = true
+spot_angle = 30.0
+
+[node name="HeadlightR" type="SpotLight3D" parent="."]
+transform = Transform3D(-1, 0, -8.74228e-08, 0, 1, 0, 8.74228e-08, 0, -1, -0.75, 1, 2.25)
+light_color = Color(1, 1, 0, 1)
+light_energy = 8.0
+shadow_enabled = true
+spot_angle = 30.0
+
+[node name="testcar" parent="." instance=ExtResource("2_iiqi5")]
+transform = Transform3D(-2, 0, -1.74846e-07, 0, 2, 0, 1.74846e-07, 0, -2, 0, 0, 0)
+
+[connection signal="area_entered" from="Area3D" to="." method="_on_area_3d_area_entered"]
+[connection signal="area_exited" from="Area3D" to="." method="_on_area_3d_area_exited"]

@@ -1,0 +1,22 @@
+[gd_scene load_steps=6 format=3 uid="uid://dth82be7hicqj"]
+
+[ext_resource type="Script" path="res://Scripts/stone.gd" id="1_7mmda"]
+[ext_resource type="Texture2D" uid="uid://bqihf36b46fwr" path="res://Assets/Textures/256_Cement 01.png" id="2_h2uq0"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_tk627"]
+albedo_texture = ExtResource("2_h2uq0")
+uv1_triplanar = true
+
+[sub_resource type="BoxMesh" id="BoxMesh_3f5gv"]
+material = SubResource("StandardMaterial3D_tk627")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_y2yv4"]
+
+[node name="Stone" type="StaticBody3D" groups=["mineable"]]
+script = ExtResource("1_7mmda")
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_3f5gv")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_y2yv4")

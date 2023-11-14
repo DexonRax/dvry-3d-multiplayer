@@ -1,0 +1,48 @@
+[gd_scene load_steps=11 format=3 uid="uid://b1bngs7g1r3rj"]
+
+[ext_resource type="Script" path="res://Scripts/tree.gd" id="1_ohwo4"]
+[ext_resource type="Texture2D" uid="uid://chkdvapcxd8mm" path="res://Assets/Textures/256_Wood Planks 03.png" id="2_7or81"]
+[ext_resource type="Texture2D" uid="uid://b16bqa4kueu87" path="res://Assets/Textures/256_Grass 01 Simple.png" id="3_dfijh"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_b46vi"]
+albedo_texture = ExtResource("2_7or81")
+
+[sub_resource type="BoxMesh" id="BoxMesh_jckms"]
+material = SubResource("StandardMaterial3D_b46vi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_l7lur"]
+material = SubResource("StandardMaterial3D_b46vi")
+
+[sub_resource type="BoxMesh" id="BoxMesh_rnixh"]
+material = SubResource("StandardMaterial3D_b46vi")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_38l7j"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_4wq6c"]
+albedo_color = Color(0, 1, 0.184314, 1)
+albedo_texture = ExtResource("3_dfijh")
+
+[sub_resource type="BoxMesh" id="BoxMesh_2m67j"]
+material = SubResource("StandardMaterial3D_4wq6c")
+
+[node name="Tree" type="StaticBody3D"]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.5, 0)
+script = ExtResource("1_ohwo4")
+
+[node name="LogMesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_jckms")
+
+[node name="Branch1Mesh" type="MeshInstance3D" parent="."]
+mesh = SubResource("BoxMesh_l7lur")
+
+[node name="Branch2Mesh" type="MeshInstance3D" parent="."]
+visible = false
+mesh = SubResource("BoxMesh_rnixh")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="."]
+shape = SubResource("BoxShape3D_38l7j")
+
+[node name="LeavesMesh" type="MeshInstance3D" parent="."]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+visible = false
+mesh = SubResource("BoxMesh_2m67j")
